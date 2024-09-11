@@ -48,8 +48,16 @@ void Cell_Record::initPage(QString strCondition)
 
 void Cell_Record::on_btn_clear_clicked()
 {
-    SqlMgr::getInstance()->clearRecord();
-    initPage();
+    // 提示用户确认清除记录
+    QMessageBox::StandardButton reply;
+    reply = QMessageBox::question(this, "Confirm Clear", "Are you sure you want to clear ALL records?",
+                                  QMessageBox::Yes | QMessageBox::No);
+
+    if (reply == QMessageBox::Yes)
+    {
+        SqlMgr::getInstance()->clearRecord();
+        initPage();
+    }
 }
 
 

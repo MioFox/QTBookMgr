@@ -103,18 +103,28 @@ void Cell_BookMgr::on_btn_update_clicked()
 void Cell_BookMgr::on_btn_del_clicked()
 {
     int r = ui->tableView->currentIndex().row();
-    if(r<0)
+    if (r < 0)
     {
-        QMessageBox::warning(nullptr,"Message","UnSelected");
+        QMessageBox::warning(nullptr, "Message", "Unselected");
     }
     else
     {
-        auto id = m_model.item(r,0)->text();
-        auto str = SqlMgr::getInstance()->delBook(id);
-        QMessageBox::information(nullptr,"Message",str.isEmpty()?"Delete Successful":str);
-        initPage();
+        // 提示用户确认删除
+        QMessageBox::StandardButton reply;
+        reply = QMessageBox::question(this, "Confirm Delete", "Are you sure you want to delete this book?",
+                                      QMessageBox::Yes | QMessageBox::No);
+
+        // 根据用户的选择执行删除操作
+        if (reply == QMessageBox::Yes)
+        {
+            auto id = m_model.item(r, 0)->text();
+            auto str = SqlMgr::getInstance()->delBook(id);
+            QMessageBox::information(this, "Message", str.isEmpty() ? "Delete Successful" : str);
+            initPage();
+        }
     }
 }
+
 
 void Cell_BookMgr::on_le_search_textChanged(const QString &arg1)
 {

@@ -56,9 +56,17 @@ void Cell_UserMgr::on_btn_del_clicked()
     }
     else
     {
-        auto id = m_model.item(r,0)->text();
-        SqlMgr::getInstance()->delUser(id);
-        initPage();
+        // 提示用户确认删除
+        QMessageBox::StandardButton reply;
+        reply = QMessageBox::question(this, "Confirm Delete", "Are you sure you want to clear ALL records?",
+                                      QMessageBox::Yes | QMessageBox::No);
+
+        if (reply == QMessageBox::Yes)
+        {
+            auto id = m_model.item(r,0)->text();
+            SqlMgr::getInstance()->delUser(id);
+            initPage();
+        }
     }
 }
 
