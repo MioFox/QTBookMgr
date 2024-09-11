@@ -1,0 +1,17 @@
+debug/cell_bookmgr.o
+debug/cell_main.o
+debug/cell_record.o
+debug/cell_usermgr.o
+debug/dlg_bookau.o
+debug/dlg_bookgs.o
+debug/dlg_login.o
+debug/main.o
+debug/sqlmgr.o
+debug/qrc_res.o
+debug/moc_cell_bookmgr.o
+debug/moc_cell_main.o
+debug/moc_cell_record.o
+debug/moc_cell_usermgr.o
+debug/moc_dlg_bookau.o
+debug/moc_dlg_bookgs.o
+debug/moc_dlg_login.o

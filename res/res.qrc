@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Files.png</file>
+        <file>Reading.png</file>
+        <file>SetUp.png</file>
+        <file>ShoppingCartFull.png</file>
+        <file>XING.ico</file>
+    </qresource>
+</RCC>
